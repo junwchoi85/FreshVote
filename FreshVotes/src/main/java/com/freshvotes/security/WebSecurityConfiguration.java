@@ -31,11 +31,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		// TODO Auto-generated method stub
 		// super.configure(http);
-		http.csrf().disable()
+		http/*.csrf().disable()*/
 			.authorizeRequests()
 			  .antMatchers("/").permitAll()
 			  .anyRequest().hasRole("USER").and()
-			.formLogin().loginPage("/login")
+			.formLogin()
+			  .loginPage("/login")
+			  .defaultSuccessUrl("/dashboard")
 			  .permitAll().and()
 			.logout()
 			  .logoutUrl("/logout")
